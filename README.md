@@ -1,5 +1,7 @@
 #Three Channel WiFi Relay/Thermostat Board
 
+Please select the FOTA branch above for latest version.
+
 The Three Channel WiFi Relay/Thermostat Board is a WiFi connected multi-purpose relay board based on the [ESP8266 SoC], original designed by Martin Harizanov and sold by Open Energy Monitor Store in the UK
 
 This fork of the code is actively maintained (2023), builds cleanly in Platfrom IO and has been rebased against NON-RTOS-SDK 2.2.1.
