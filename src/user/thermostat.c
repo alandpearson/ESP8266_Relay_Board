@@ -134,16 +134,16 @@ void ICACHE_FLASH_ATTR thermostat(int current_t, int setpoint) {
   if (current_t < setpoint - sysCfg.thermostat1_hysteresis_low) {
     DBG("Thermostat: Room temperature (%d) < setpoint (%d), relayState(%d).\n", current_t, setpoint,
         thermostatRelayActive);
-    if (sysCfg.thermostat1_opmode == THERMOSTAT_HEATING && !thermostatRelayActive)
+    if ((sysCfg.thermostat1_opmode == THERMOSTAT_HEATING) && (thermostatRelayActive != 1))
       thermostatRelayOn();
-    else if (sysCfg.thermostat1_opmode != THERMOSTAT_HEATING && thermostatRelayActive)
+    else if ((sysCfg.thermostat1_opmode != THERMOSTAT_HEATING) && (thermostatRelayActive >= 1) )
       thermostatRelayOff();
   } else if (current_t > setpoint + sysCfg.thermostat1_hysteresis_high) {
     DBG("Thermostat: Room temperature (%d) > setpoint (%d), relayState (%d).\n", current_t, setpoint,
         thermostatRelayActive);
-    if (sysCfg.thermostat1_opmode == THERMOSTAT_HEATING && thermostatRelayActive)
+    if ((sysCfg.thermostat1_opmode == THERMOSTAT_HEATING) && (thermostatRelayActive >= 1) )
       thermostatRelayOff();
-    else if (sysCfg.thermostat1_opmode != THERMOSTAT_HEATING && !thermostatRelayActive)
+    else if (sysCfg.thermostat1_opmode != THERMOSTAT_HEATING && (thermostatRelayActive !=1) )
       thermostatRelayOn();
   }
 }
